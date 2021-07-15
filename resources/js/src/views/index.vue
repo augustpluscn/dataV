@@ -54,7 +54,7 @@
           <div class="content-box">
             <div>
               <dv-border-box-13>
-                <centerRight1 :list="list"/>
+                <centerRight1 :list="list" :notice="notice"/>
               </dv-border-box-13>
             </div>
           </div>
@@ -77,6 +77,7 @@ export default {
       dateWeek: null,
       weekday: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
       list: [],
+      notice: "",
     };
   },
   components: {
@@ -98,11 +99,14 @@ export default {
     cancelLoading() {
       setTimeout(() => {
         this.loading = false;
-      }, 500);
+      }, 2000);
     },
     getDate() {
       Api.getOrdList().then((res) => {
         this.list = res.data.list;
+      });
+      Api.getNotice().then((res) => {
+        this.notice = res.data.notice;
       });
     },
   },

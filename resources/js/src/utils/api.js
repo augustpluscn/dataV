@@ -8,4 +8,8 @@ export default {
   getFlowList: () => {
     return http.get('flowlist', {})
   }
+  ,
+  getNotice: () => {
+    return http.get('notice', {})
+  }
 }

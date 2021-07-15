@@ -2,7 +2,10 @@
   <div id="centerRight1">
     <div class="bg-color-black">
       <div class="d-flex jc-center body-box">
-        <dv-scroll-board :config="config" style="width:23rem;height:9.5rem" />
+        <dv-scroll-board :config="config" style="width:23rem;height:9rem" />
+        <div class="notice">
+          <div>{{notice}}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -12,6 +15,7 @@
 export default {
   props: {
     list: Array,
+    notice: String,
   },
   computed: {
     config() {
@@ -26,8 +30,8 @@ export default {
           element.数量,
           element.已出库量,
           element.数量 - element.已出库量,
-          element.订单日期,
-          element.订单交期,
+          element.订单日期.substr(0, 10),
+          element.订单交期.substr(0, 10),
         ]);
       });
       return {
@@ -44,15 +48,16 @@ export default {
           "订单交期",
         ],
         data: data,
-        rowNum: 20, //表格行数
-        headerHeight: 35,
+        rowNum: 10, //表格行数
+        waitTime: 5000,
+        headerHeight: 50,
         headerBGC: "#00BAFF", //表头
         oddRowBGC: "#0f1325", //奇数行
         evenRowBGC: "#171c33", //偶数行
         index: true,
-        columnWidth: [50],
+        columnWidth: [100],
         align: ["center"],
-        carousel: 'page'
+        carousel: "page",
       };
     },
   },
@@ -78,6 +83,51 @@ export default {
   .body-box {
     border-radius: 0.125rem;
     overflow: hidden;
+  }
+  .header-item,
+  .ceil,
+  .notice {
+    font-size: 0.25rem;
+  }
+  .notice {
+    line-height: 0.3rem;
+    div {
+      display: block;
+      -moz-animation: move 30s linear infinite normal;
+      -webkit-animation: move 30s linear infinite normal;
+      animation: move 30s linear infinite normal;
+      white-space: nowrap;
+    }
+    @-moz-keyframes move {
+      0% {
+        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+      }
+    }
+    @-webkit-keyframes move {
+      0% {
+        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+      }
+    }
+    @keyframes move {
+      0% {
+        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+      }
+    }
   }
 }
 </style>

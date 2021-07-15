@@ -24,8 +24,8 @@ export default {
           element.产品编号,
           element.规格,
           element.数量,
-          element.流程日期,
-          element.计划交期,
+          element.流程日期.substr(0, 10),
+          element.计划交期.substr(0, 10),
         ]);
       });
       return {
@@ -40,15 +40,16 @@ export default {
           "计划交期",
         ],
         data: data,
-        rowNum: 20, //表格行数
-        headerHeight: 35,
+        rowNum: 10, //表格行数
+        waitTime: 5000,
+        headerHeight: 50,
         headerBGC: "#00BAFF", //表头
         oddRowBGC: "#0f1325", //奇数行
         evenRowBGC: "#171c33", //偶数行
         index: true,
-        columnWidth: [50],
+        columnWidth: [100],
         align: ["center"],
-        carousel: 'page'
+        carousel: "page",
       };
     },
   },
@@ -74,6 +75,10 @@ export default {
   .body-box {
     border-radius: 0.125rem;
     overflow: hidden;
+  }
+  .header-item,
+  .ceil {
+    font-size: 0.25rem;
   }
 }
 </style>

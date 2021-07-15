@@ -22,4 +22,5 @@ Route::namespace ('App\Http\Controllers\Api')->group(function () {
     //数据字典
     Route::any('ordlist', 'OrdController@getOrdList');
     Route::any('flowlist', 'FlowController@getFlowList');
+    Route::any('notice', 'NoticeControlle@getNotice');
 });
