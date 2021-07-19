@@ -84,18 +84,10 @@ export default {
     centerRight1,
   },
   mounted() {
+    this.full();
     this.timeFn();
     this.cancelLoading();
     this.getDate();
-    if (ele.requestFullscreen) {
-      ele.requestFullscreen();
-    } else if (ele.mozRequestFullScreen) {
-      ele.mozRequestFullScreen();
-    } else if (ele.webkitRequestFullscreen) {
-      ele.webkitRequestFullscreen();
-    } else if (ele.msRequestFullscreen) {
-      ele.msRequestFullscreen();
-    }
   },
   methods: {
     timeFn() {
@@ -117,6 +109,20 @@ export default {
       Api.getNotice().then((res) => {
         this.notice = res.data.notice;
       });
+    },
+    full(element = null) {
+      if (!element) {
+        element = document.body;
+      }
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullScreen) {
+        element.webkitRequestFullScreen();
+      }
     },
   },
 };
