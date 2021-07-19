@@ -9,11 +9,7 @@
             <dv-decoration-8 :color="['#568aea', '#000000']" style="width:2.5rem;height:.625rem;" />
             <div class="title">
               <span class="title-text">订单跟踪</span>
-              <dv-decoration-6
-                class="title-bototm"
-                :reverse="true"
-                :color="['#50e3c2', '#67a1e5']"
-                style="width:3.125rem;height:.1rem;" />
+              
             </div>
             <dv-decoration-8
               :reverse="true"
@@ -21,32 +17,6 @@
               style="width:2.5rem;height:.625rem;" />
           </div>
           <dv-decoration-10 style="width:33.3%;height:.0625rem; transform: rotateY(180deg);" />
-        </div>
-
-        <!-- 第二行 -->
-        <div class="d-flex jc-between px-2">
-          <div class="d-flex" style="width: 40%">
-            <div
-              class="react-right ml-4"
-              style="width: 6.25rem; text-align: left;background-color: #0f1325;">
-              <span class="react-before"></span>
-              <span class="text"></span>
-            </div>
-            <div class="react-right ml-3" style="background-color: #0f1325;">
-              <span class="text colorBlue"></span>
-            </div>
-          </div>
-          <div style="width: 40%" class="d-flex">
-            <div class="react-left mr-3" style="background-color: #0f1325;">
-              <span class="text fw-b"></span>
-            </div>
-            <div
-              class="react-left mr-4"
-              style="width: 6.25rem; background-color: #0f1325; text-align: right;">
-              <span class="react-after"></span>
-              <span class="text">{{dateYear}} {{dateWeek}} {{dateDay}}</span>
-            </div>
-          </div>
         </div>
 
         <div class="body-box">
@@ -84,8 +54,6 @@ export default {
     centerRight1,
   },
   mounted() {
-    this.full();
-    this.timeFn();
     this.cancelLoading();
     this.getDate();
   },
@@ -109,21 +77,7 @@ export default {
       Api.getNotice().then((res) => {
         this.notice = res.data.notice;
       });
-    },
-    full(element = null) {
-      if (!element) {
-        element = document.body;
-      }
-      if (element.requestFullscreen) {
-        element.requestFullscreen();
-      } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-      } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-      } else if (element.webkitRequestFullScreen) {
-        element.webkitRequestFullScreen();
-      }
-    },
+    }
   },
 };
 </script>
