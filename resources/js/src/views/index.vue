@@ -54,7 +54,7 @@
           <div class="content-box">
             <div>
               <dv-border-box-13>
-                <centerRight1 :list="list" :notice="notice"/>
+                <centerRight1 :list="list" :notice="notice" />
               </dv-border-box-13>
             </div>
           </div>
@@ -87,6 +87,15 @@ export default {
     this.timeFn();
     this.cancelLoading();
     this.getDate();
+    if (ele.requestFullscreen) {
+      ele.requestFullscreen();
+    } else if (ele.mozRequestFullScreen) {
+      ele.mozRequestFullScreen();
+    } else if (ele.webkitRequestFullscreen) {
+      ele.webkitRequestFullscreen();
+    } else if (ele.msRequestFullscreen) {
+      ele.msRequestFullscreen();
+    }
   },
   methods: {
     timeFn() {
